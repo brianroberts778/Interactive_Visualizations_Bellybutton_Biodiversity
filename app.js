@@ -6,7 +6,7 @@ d3.json("samples.json").then(sample_data => {
         dropdownMenu.append("option").text(loop_data);
     })
     optionChanged(sample_data.names[0])
-})
+});
 
 function optionChanged(user_id){
     d3.json("samples.json").then(demo_data => {
@@ -19,21 +19,22 @@ function optionChanged(user_id){
         dataHolder.html("")
         Object.entries(firstInfo).forEach(([key,value])=>{
             dataHolder.append("p").text(`${key}: ${value}`);
-        })
+        });
+        var filterSampleData = demo_data.samples.filter(sid => sid.id == user_id)[0];
         //Place bar chart here, fetch variables from samples.json "x".samples
-        var sampleValues = demo_data.samples[0].sample_values.slice(0,10);
+        var sampleValues = filterSampleData.sample_values.slice(0,10).reverse();
         // console.log(sampleValues)
-        var ids = demo_data.samples[0].otu_ids;
+        var ids = filterSampleData.otu_ids;
         // console.log(ids)
-        var labels = demo_data.samples[0].otu_labels.slice(0,10);
+        //var labels = demo_data.samples[0].otu_labels.slice(0,10).reverse();
         // console.log(labels)
         // Retrieve only the top 10 OTUs present in a subject
-        var topOTUs = ( demo_data.samples[0].otu_ids.slice(0,10));
+        var topOTUs = filterSampleData.otu_ids.slice(0,10).reverse();
         // Format the OTUs for our plot
         var idOTUs = topOTUs.map(d => "OTU " + d);
         console.log(`OTU_IDS: ${idOTUs}`)
         // Retrieve the top 10 labels for our plot (initial var above)
-        var labels = demo_data.samples[0].otu_labels.slice(0,10);
+        var labels = filterSampleData.otu_labels.slice(0,10).reverse();
         console.log(`OTU_Labels: ${labels}`)
         // Create trace for our bar chart
         var trace1 = {
@@ -64,14 +65,14 @@ function optionChanged(user_id){
 
         // Create trace for our bubble chart
         var trace2 = {
-            x: demo_data.samples[0].otu_ids,
-            y: demo_data.samples[0].sample_values,
+            x: filterSampleData.otu_ids,
+            y: filterSampleData.sample_values,
             mode: "markers",
             marker: {
-                size: demo_data.samples[0].sample_values,
-                color: demo_data.samples[0].otu_ids
+                size: filterSampleData.sample_values,
+                color: filterSampleData.otu_ids
             },
-            text: demo_data.samples[0].otu_labels
+            text: filterSampleData.otu_labels
 
         };
 

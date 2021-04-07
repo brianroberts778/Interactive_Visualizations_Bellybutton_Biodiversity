@@ -23,3 +23,6 @@ Step 1: Plotly
 5. Display each key-value pair from the metadata JSON object somewhere on the page.
 
 6. Update all of the plots any time that a new sample is selected.
+
+<img width="463" alt="bellybutton1" src="https://user-images.githubusercontent.com/70656160/113900183-8f031100-979b-11eb-942a-cb82de90196b.png">
+

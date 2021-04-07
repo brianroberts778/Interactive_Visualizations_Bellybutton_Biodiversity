@@ -26,3 +26,4 @@ Step 1: Plotly
 
 <img width="463" alt="bellybutton1" src="https://user-images.githubusercontent.com/70656160/113900183-8f031100-979b-11eb-942a-cb82de90196b.png">
 
+<img width="991" alt="bellybutton2" src="https://user-images.githubusercontent.com/70656160/113900243-9e825a00-979b-11eb-8f1d-6059e9532d28.png">
